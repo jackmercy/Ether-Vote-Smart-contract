@@ -1,0 +1,1 @@
+##Contract for voting dapp

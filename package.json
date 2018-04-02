@@ -1,0 +1,27 @@
+{
+  "name": "voting-contract",
+  "version": "1.0.0",
+  "description": "contract for voting dapp",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "keywords": [
+    "truffle",
+    "blockchain",
+    "contract"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackmercy/voting-contract.git"
+  },
+  "author": "Jack & Lilly",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jackmercy/voting-contract/issues"
+  },
+  "homepage": "https://github.com/jackmercy/voting-contract#readme"
+}
