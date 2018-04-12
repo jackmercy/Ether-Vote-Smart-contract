@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 // We have to specify what version of compiler this code will compile with
 
-contract Voting_V2 {
+contract Voting {
     bytes32[] public candidateList;
     /* mapping field below is equivalent to an associative array or hash.
     The key of the mapping is candidate name stored as type bytes32 and value is
@@ -9,17 +9,20 @@ contract Voting_V2 {
     */
 
     mapping (bytes32 => uint256) public votesReceived;
+    mapping (address => bool) public votedAccount;
     /* Solidity doesn't let you pass in an array of strings in the constructor (yet).
     We will use an array of bytes32 instead to store the list of candidates
     */
 
     event VoteFor(address indexed from, bytes32[] indexed toCandidates);
+    event FrozenAccounts(address target, bool frozen);
+
     /* This is the constructor which will be called once when you
     deploy the contract to the blockchain. When we deploy the contract,
     we will pass an array of candidates who will be contesting in the election
     */
 
-    function Voting_V2(bytes32[] candidateIDs) public {
+    function Voting(bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
     }
 
@@ -43,12 +46,17 @@ contract Voting_V2 {
         }
     }
 
-    function validCandidate(bytes32 candidate)  public view returns (bool) {
+    function validCandidate(bytes32 candidate) public view returns (bool) {
         for (uint i = 0; i < candidateList.length; i++) {
             if (candidateList[i] == candidate) {
                 return true;
             }
         }
         return false;
+    }
+    /* freeze account of user if they've already voted */
+    function freezeAccount(bool freeze) public {
+        votedAccount[msg.sender] = freeze;
+        emit FrozenAccounts(msg.sender, freeze);
     }
 }
