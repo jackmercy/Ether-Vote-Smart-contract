@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 // We have to specify what version of compiler this code will compile with
 
-contract Voting {
+contract Voting_V2 {
     bytes32[] public candidateList;
     /* mapping field below is equivalent to an associative array or hash.
     The key of the mapping is candidate name stored as type bytes32 and value is
@@ -22,7 +22,7 @@ contract Voting {
     we will pass an array of candidates who will be contesting in the election
     */
 
-    function Voting(bytes32[] candidateIDs) public {
+    function Voting_V2(bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
     }
 

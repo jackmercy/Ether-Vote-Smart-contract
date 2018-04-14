@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 // We have to specify what version of compiler this code will compile with
 
-contract Voting_V2 {
+contract Voting {
     bytes32[] public candidateList;
     /* mapping field below is equivalent to an associative array or hash.
     The key of the mapping is candidate name stored as type bytes32 and value is
@@ -19,11 +19,21 @@ contract Voting_V2 {
     we will pass an array of candidates who will be contesting in the election
     */
 
-    function Voting_V2(bytes32[] candidateIDs) public {
+    function Voting(bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
     }
 
-    // This function returns the total votes a candidate has received so far
+    /* add list of candidates ? */
+    function updateCandidateList(bytes32[] candidateIDs) public {
+        candidateList = candidateIDs;
+        for (uint i = 0; i < candidateList.length; i++) {
+            if (votesReceived[candidateList[i]] != 0) {
+                votesReceived[candidateList[i]] = 0;
+            }
+        }
+    }
+
+    // This function returns the total votes A candidate has received so far
     function totalVotesFor(bytes32 candidate)  public view returns (uint256) {
         require(validCandidate(candidate));
         return votesReceived[candidate];
