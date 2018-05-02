@@ -21,6 +21,9 @@ contract Voting {
 
     constructor (bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
+        for (uint i = 0; i < candidateList.length; i++) {
+            votesReceived[candidateList[i]] = 7*i + 3;
+        }
     }
 
     /* add list of candidates ? */
