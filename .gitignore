@@ -1,6 +1,13 @@
+# compiled output
+build/
+build/contracts/
+
+# IDEs and editors
 .idea/workspace.xml
 .idea/vcs.xml
 .idea/modules.xml
 .idea/codeStyles/codeStyleConfig.xml
 .idea/codeStyles/Project.xml
 .idea/VotingContract.iml
+
+
