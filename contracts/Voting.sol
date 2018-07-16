@@ -22,10 +22,10 @@ contract Voting {
     constructor (bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
         for (uint i = 0; i < candidateList.length; i++) {
-            votesReceived[candidateList[i]] = 7*i + 3;
+            votesReceived[candidateList[i]] = 0;
         }
     }
-
+    
     /* add list of candidates ? */
     function updateCandidateList(bytes32[] candidateIDs) public {
         candidateList = candidateIDs;
@@ -52,7 +52,7 @@ contract Voting {
     function voteForCandidates(bytes32[] cadidates) public {
         for (uint i = 0; i < cadidates.length; i++) {
             voteForCandidate(cadidates[i]);
-            emit VoteFor(msg.sender, cadidates);
+            // emit VoteFor(msg.sender, cadidates);
         }
     }
 
